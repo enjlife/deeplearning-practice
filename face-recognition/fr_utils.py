@@ -200,8 +200,8 @@ def load_dataset():
 
 def img_to_encoding(image_path, model):
     img1 = cv2.imread(image_path, 1)
-    img = img1[..., ::-1]
-    img = np.around(np.transpose(img, (2, 0, 1)) / 255.0, decimals=12)
+    img = img1[..., ::-1]  # ...选取所有维度,如果后面还有维度则变为填补剩余维度
+    img = np.around(np.transpose(img, (2, 0, 1)) / 255.0, decimals=12)  # rgb to bgr 指定精度
     x_train = np.array([img])
     embedding = model.predict_on_batch(x_train)
     return embedding

@@ -24,7 +24,7 @@ class CONFIG:
     OUTPUT_DIR = 'output/'
 
 
-def load_vgg_model(input_image,path=CONFIG.VGG_MODEL_COLAB):
+def load_vgg_model(input_image,path=CONFIG.VGG_MODEL):
     vgg = scipy.io.loadmat(path)
     vgg_layers = vgg['layers']
     def _weights(layer, expected_layer_name):
